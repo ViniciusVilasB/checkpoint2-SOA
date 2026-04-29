@@ -72,7 +72,7 @@ Foram implementados testes automatizados no ReservaService cobrindo:
 ```json
 {
   "usuario": "admin",
-  "senha": "123"
+  "senha": "admin123"
 }
 ```
 ### 2. Criar Sala (POST /api/salas) - Requer Token
