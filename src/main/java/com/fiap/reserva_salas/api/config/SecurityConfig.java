@@ -25,11 +25,11 @@ public class SecurityConfig {
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(req -> {
                     req.requestMatchers(HttpMethod.POST, "/api/login").permitAll();
-                    req.requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll();
-                    req.requestMatchers("/h2-console/**").permitAll();
+                    req.requestMatchers("/v3/api-docs", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll();
+                    req.requestMatchers("/h2-console", "/h2-console/**").permitAll();
                     req.anyRequest().authenticated();
                 })
-                .headers(headers -> headers.frameOptions(fo -> fo.disable())) // Permite o banco H2 abrir no navegador
+                .headers(headers -> headers.frameOptions(fo -> fo.disable()))
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
